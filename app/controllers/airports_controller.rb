@@ -60,6 +60,15 @@ class AirportsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # Show <i>name</i> if <i>code</> is given
+  def with_code
+    @airport = Airport.find_by_code(params[:code])
+    respond_to do |format|
+      format.html { render :action => :show }
+      format.json { render :json => @airport }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
-  resources :airports
+  resources :airports do
+    get 'with_code', on: :collection # collection: um auf URL zugreifen zu koennen
+    # hier nun moeglich mit http:.../../airports/with_code?code=Foo
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'airports#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
